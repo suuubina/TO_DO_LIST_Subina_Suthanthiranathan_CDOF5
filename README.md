@@ -12,3 +12,7 @@ Simply click “run” to run the project.
 ## A guide on how to contribute
 
 You can help make the project more user-friendly.
+
+
+
+JE SUIS EN TRAIN D'AMELIORER TON README (C'est Cecilia).
