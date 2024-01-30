@@ -118,7 +118,7 @@ def main():
             print("Au revoir !")
             break
         else:
-            print("Choix invalide. Veuillez saisir un chiffre entre 1 et 6")
+            print("Choix invalide. Veuillez saisir un chiffre entre 1 et 6 :")
 
 
 if __name__ == "__main__":
