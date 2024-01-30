@@ -103,7 +103,11 @@ def main():
             "Que voulez vous faire ? Choisissez un chiffre entre 1 et 6 : ")
 
         if choix == '1':
-            afficher_taches()
+            z = "fji"
+            while z !="z":
+                afficher_taches()
+                z = input("Appuyer sur z pour sortir : ")
+
         elif choix == '2':
             nouvelle_tache = input(
                 "Entrez la tâche que vous souhaitez ajouter : ")
