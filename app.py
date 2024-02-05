@@ -43,20 +43,26 @@ def supprimer_tache():
 
 
 def modifier_tache():
-    afficher_taches()
-    if not taches:
-        print("Aucune tâche trouvée.")
-        return
-    try:
-        index = int(input("Entrez le numéro de la tâche à modifier : ")) - 1
-        if 0 <= index < len(taches):
-            nouvelle_tache = input("Entrez la nouvelle version de cette tâche : ")
-            taches[index] = nouvelle_tache
-            print("Votre tâche a été modifiée avec succès.")
-        else:
-            print("Index de tâche invalide. Veuillez réessayer.")
-    except ValueError:
-        print("Veuillez entrer un numéro valide.")
+    while True:
+        afficher_taches()
+        if not taches:
+            print("Aucune tâche trouvée.")
+            return
+
+        try:
+            index = int(input("Entrez le numéro de la tâche à modifier : ")) - 1
+            if 0 <= index < len(taches):
+                nouvelle_tache = input("Entrez la nouvelle version de cette tâche : ")
+                taches[index] = nouvelle_tache
+                print("Votre tâche a été modifiée avec succès.")
+            else:
+                print("Index de tâche invalide. Veuillez réessayer.")
+        except ValueError:
+            print("Veuillez entrer un numéro valide.")
+
+        continuer_modification = input("Voulez-vous modifier une autre tâche ? (O/N) ").upper()
+        if continuer_modification != 'O':
+            break  
 
 def completer_tache():
     afficher_taches() 

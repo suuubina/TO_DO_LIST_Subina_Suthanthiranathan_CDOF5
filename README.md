@@ -32,3 +32,4 @@ Selecting option `5` lets you mark a task as completed. Enter the number of the 
 
 ### 6. Quit
 Selecting option `6` exits the application.
+
