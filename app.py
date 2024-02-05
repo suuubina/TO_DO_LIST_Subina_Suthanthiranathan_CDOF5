@@ -1,4 +1,4 @@
-
+import tkinter as tk
 # Afficher les tâches
 # Ajouter une tâche
 # Supprimer une tâche
@@ -9,12 +9,24 @@
 taches = []
 
 def afficher_taches():
-    print("\n*** Ma liste de tâches ***")
+    fenetre_affichage = tk.Tk()
+    fenetre_affichage.title("Liste de tâches")
+
+    label_titre = tk.Label(fenetre_affichage, text="Ma liste de tâches")
+    label_titre.pack()
+
     if not taches:
-        print("Aucune tâche trouvée.")
+        label_vide = tk.Label(fenetre_affichage, text="Aucune tâche trouvée.")
+        label_vide.pack()
     else:
-        for index, tache in enumerate(taches, start=1):
-            print(f"{index}. {tache}")
+        for tache in taches:
+            label_tache = tk.Label(fenetre_affichage, text=f"- {tache}")
+            label_tache.pack()
+
+    bouton_fermer = tk.Button(fenetre_affichage, text="Fermer", command=fenetre_affichage.destroy)
+    bouton_fermer.pack()
+
+    fenetre_affichage.mainloop()
 
 
 def ajouter_tache(nouvelle_tache):
