@@ -43,3 +43,6 @@ The project offers the following functionality:
    - Exits the application.
 
 Feel free to contribute and enhance the project to make it even better!
+
+### 6. Quit
+Selecting option `6` exits the application.
