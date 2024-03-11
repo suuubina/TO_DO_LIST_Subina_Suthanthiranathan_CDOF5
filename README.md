@@ -1,34 +1,48 @@
 # TO_DO_LIST_Subina_Suthanthiranathan_CDOF5
 
-## A description of the project
+## Project Description
 
-I created a console-based application to help track tasks to do, a "to do list". You should be able to view, add,
-delete, edit and complete tasks. This project was done in python.
+This project is a console-based application that helps users track tasks with a "to-do list" functionality. Users can view, add, delete, edit, and mark tasks as completed. The application is implemented in Python.
 
-## How to run the project
+## How to Run the Project
 
-Simply click “run” to run the project.
+To run the project, follow these steps:
+1. Clone the project repository from GitHub.
+2. Open the terminal or command prompt.
+3. Navigate to the project directory.
+4. Run the main Python file.
 
-## A guide on how to contribute
+## Contribution Guidelines
 
-You can help make the project more user-friendly.
+If you would like to contribute to the project, you can help by improving the user experience and adding new features. To contribute, follow these steps:
+1. Fork the project repository on GitHub.
+2. Make the desired changes and improvements.
+3. Test your changes thoroughly.
+4. Submit a pull request explaining the changes you made.
 
 ## Project Functionality
 
-### 1. View Tasks
-Selecting option `1` will display the current list of tasks.
+The project offers the following functionality:
 
-### 2. Add a Task
-Selecting option `2` allows you to add a new task. Enter the description of the task when prompted.
+1. View Tasks:
+   - Allows users to view the current list of tasks.
 
-### 3. Delete a Task
-Selecting option `3` prompts you to enter the number of the task you want to delete. The application will remove the selected task.
+2. Add a Task:
+   - Enables users to add a new task by entering its description.
 
-### 4. Modify a Task
-Selecting option `4` initiates the modification process. Enter the number of the task you want to modify and provide the new description.
+3. Delete a Task:
+   - Allows users to delete a specific task by providing its corresponding number.
 
-### 5. Complete a Task
-Selecting option `5` lets you mark a task as completed. Enter the number of the task you have completed, and the application will mark it as done.
+4. Modify a Task:
+   - Enables users to modify an existing task by entering its number and providing a new description.
+
+5. Complete a Task:
+   - Allows users to mark a task as completed by entering its number.
+
+6. Quit:
+   - Exits the application.
+
+Feel free to contribute and enhance the project to make it even better!
 
 ### 6. Quit
 Selecting option `6` exits the application.
