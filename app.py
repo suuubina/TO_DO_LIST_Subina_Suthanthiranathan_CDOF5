@@ -1,10 +1,4 @@
 import tkinter as tk
-# Afficher les tâches
-# Ajouter une tâche
-# Supprimer une tâche
-# Modifier une tâche
-# Compléter une tâche
-# Quitter
 
 taches = []
 
@@ -29,119 +23,85 @@ def afficher_taches():
     fenetre_affichage.mainloop()
 
 
-def ajouter_tache(nouvelle_tache):
-    taches.append(nouvelle_tache)
-    print(f'Tâche "{nouvelle_tache}" ajoutée.')
-
+def ajouter_tache():
+    nouvelle_tache = saisie_tache.get()
+    if nouvelle_tache:
+        taches.append(nouvelle_tache)
+        liste_taches.insert(tk.END, nouvelle_tache)
+        saisie_tache.delete(0, tk.END)
+        print(f'Tâche "{nouvelle_tache}" ajoutée.')
+    else:
+        print("Veuillez entrer une tâche valide.")
 
 def supprimer_tache():
-    afficher_taches()
-    if not taches:
-        print("Aucune tâche trouvée.")
-        return None
-    try:
-        choix_supp = int(
-            input("Entrez le numéro de la tâche à supprimer : ")) - 1
-        if 0 <= choix_supp < len(taches):
-            tache_supprimee = taches.pop(choix_supp)
-            print(f'La tâche "{tache_supprimee}" a été supprimée avec succès.')
-            return choix_supp
-        else:
-            print("Index de tâche invalide. Veuillez réessayer.")
-            return None
-    except ValueError:
-        print("Veuillez entrer un numéro valide.")
-        return None
-
+    index_selection = liste_taches.curselection()
+    if index_selection:
+        index = index_selection[0]
+        tache_supprimee = taches.pop(index)
+        liste_taches.delete(index)
+        print(f'La tâche "{tache_supprimee}" a été supprimée avec succès.')
+    else:
+        print("Veuillez sélectionner une tâche à supprimer.")
 
 def modifier_tache():
-    while True:
-        afficher_taches()
-        if not taches:
-            print("Aucune tâche trouvée.")
-            return
-
-        try:
-            index = int(input("Entrez le numéro de la tâche à modifier : ")) - 1
-            if 0 <= index < len(taches):
-                nouvelle_tache = input("Entrez la nouvelle version de cette tâche : ")
-                taches[index] = nouvelle_tache
-                print("Votre tâche a été modifiée avec succès.")
-            else:
-                print("Index de tâche invalide. Veuillez réessayer.")
-        except ValueError:
-            print("Veuillez entrer un numéro valide.")
-
-        continuer_modification = input("Voulez-vous modifier une autre tâche ? (O/N) ").upper()
-        if continuer_modification != 'O':
-            break  
+    index_selection = liste_taches.curselection()
+    if index_selection:
+        index = index_selection[0]
+        ancienne_tache = liste_taches.get(index)
+        nouvelle_tache = saisie_tache.get()
+        if nouvelle_tache:
+            taches[index] = nouvelle_tache
+            liste_taches.delete(index)
+            liste_taches.insert(index, nouvelle_tache)
+            saisie_tache.delete(0, tk.END)
+            print(f'La tâche "{ancienne_tache}" a été modifiée avec succès.')
+        else:
+            print("Veuillez entrer une tâche valide.")
+    else:
+        print("Veuillez sélectionner une tâche à modifier.")
 
 def completer_tache():
-    afficher_taches() 
-    if not taches:
-        print("Aucune tâche trouvée.")
-        return None  
-    try:
-        choix_complete = int(input("Veuillez saisir le numéro de la tâche que vous avez complétée : ")) - 1
-        if 0 <= choix_complete < len(taches):
-            tache_completee = taches.pop(choix_complete)
-            print(f'La tâche "{tache_completee}" a été complétée avec succès.')
-            return choix_complete
-        else:
-            print("Index de tâche invalide. Veuillez réessayer.")
-            return None 
-    except ValueError:
-        print("Veuillez entrer un numéro valide.")
-        return None
-    
-
-
-
-
+    index_selection = liste_taches.curselection()
+    if index_selection:
+        index = index_selection[0]
+        tache_completee = taches.pop(index)
+        liste_taches.delete(index)
+        print(f'La tâche "{tache_completee}" a été complétée avec succès.')
+    else:
+        print("Veuillez sélectionner une tâche à compléter.")
 
 def main():
-    while True:
-        print("   ")
-        print("**********")
-        print(" ")
-        print("1. Afficher les tâches")
-        print(" ")
-        print("2. Ajouter une tâche")
-        print(" ")
-        print("3. Supprimer une tâche")
-        print(" ")
-        print("4. Modifier une tâche")
-        print(" ")
-        print("5. Compléter une tâche")
-        print(" ")
-        print("6. Quitter")
-        print(" ")
+    fenetre_principale = tk.Tk()
+    fenetre_principale.title("Gestionnaire de tâches")
 
-        choix = input(
-            "Que voulez vous faire ? Choisissez un chiffre entre 1 et 6 : ")
+    label_tache = tk.Label(fenetre_principale, text="Tâche :")
+    label_tache.pack()
 
-        if choix == '1':
-            z = "fji"
-            while z !="z":
-                afficher_taches()
-                z = input("Appuyer sur z pour sortir : ")
+    saisie_tache = tk.Entry(fenetre_principale)
+    saisie_tache.pack()
 
-        elif choix == '2':
-            nouvelle_tache = input(
-                "Entrez la tâche que vous souhaitez ajouter : ")
-            ajouter_tache(nouvelle_tache)
-        elif choix == '3':
-            supprimer_tache()
-        elif choix == '4':
-            modifier_tache()
-        elif choix == '5':
-            completer_tache()
-        elif choix == '6':
-            print("Au revoir !")
-            break
-        else:
-            print("Choix invalide. Veuillez saisir un chiffre entre 1 et 6 :")
+    bouton_ajouter = tk.Button(fenetre_principale, text="Ajouter", command=ajouter_tache)
+    bouton_ajouter.pack()
 
+    liste_taches = tk.Listbox(fenetre_principale)
+    liste_taches.pack()
+
+    bouton_supprimer = tk.Button(fenetre_principale, text="Supprimer", command=supprimer_tache)
+    bouton_supprimer.pack()
+
+    bouton_modifier = tk.Button(fenetre_principale, text="Modifier", command=modifier_tache)
+    bouton_modifier.pack()
+
+    bouton_completer = tk.Button(fenetre_principale, text="Compléter", command=completer_tache)
+    bouton_completer.pack()
+
+    bouton_afficher = tk.Button(fenetre_principale, text="Afficher", command=afficher_taches)
+    bouton_afficher.pack()
+
+    bouton_quitter = tk.Button(fenetre_principale, text="Quitter", command=fenetre_principale.quit)
+    bouton_quitter.pack()
+
+    fenetre_principale.mainloop()
 
 if __name__ == "__main__":
     main()
